@@ -19,7 +19,7 @@
                    <i class="fa fa-caret-down"></i>
                </h5>
 
-               <x-control folder="true"/>
+               <x-control folder="true" :folderId="$getFolder->id"/>
            </div>
 
         </div>
@@ -34,7 +34,7 @@
                         <div class="w-100 h-100 d-flex justify-content-center align-items-center">
                             <i class="fa
                                 @if($drive->extension === "csv")
-                                    fa-file-alt text-secondary
+                                    fa-file-alt text-success
                                 @elseif($drive->extension === "txt")
                                     fa-file-word text-primary
                                 @elseif($drive->extension === "pdf")
@@ -64,7 +64,7 @@
                             <div>{{ $drive->original_name }}</div>
                         </div>
                     </div>
-                    <x-control folder="false"/>
+                    <x-control folder="false" folderId="null"/>
                 </div>
             @empty
                 <div class="d-flex justify-content-center align-items-center empty__container">
@@ -78,5 +78,16 @@
 @endsection
 
 @push('script')
+    <script>
+        let newFileFolder = document.getElementById('newFileFolder');
+        let uploadFormFolder = document.getElementById('uploadFormFolder');
+        let uploadFileFolder = document.getElementById('uploadFileFolder');
 
+        newFileFolder.addEventListener('click', () => {
+            uploadFileFolder.click();
+        });
+        uploadFileFolder.addEventListener('change', () => {
+            uploadFormFolder.submit();
+        })
+    </script>
 @endpush

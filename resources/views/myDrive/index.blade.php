@@ -57,7 +57,7 @@
                             <div class="w-100 h-100 d-flex justify-content-center align-items-center">
                                 <i class="fa
                                      @if($drive->extension === "csv")
-                                        fa-file-alt text-secondary
+                                        fa-file-alt text-success
                                         @elseif($drive->extension === "txt")
                                             fa-file-word text-primary
                                             @elseif($drive->extension === "pdf")
@@ -88,7 +88,7 @@
                             <div>{{ $drive->original_name }}</div>
                         </div>
                     </div>
-                    <x-control folder="false"/>
+                    <x-control folder="false" folderId="null"/>
                 </div>
             @empty
                     <div class="d-flex justify-content-center align-items-center empty__container">

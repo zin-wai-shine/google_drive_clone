@@ -47,12 +47,18 @@ class DriveController extends Controller
             $drive = new Drive();
             $drive->original_name = $file->getClientOriginalName();
             $drive->new_name = $file->store('public/myDrive');
-            $drive->extension = $file->extension();
+            if($file->getClientOriginalExtension()){
+                $drive->extension = $file->getClientOriginalExtension();
+            }else{
+                $drive->extension = "txt";
+            }
             $drive->user_id = Auth::id();
-
+            if($request->folderId){
+                $drive->folder_id = $request->folderId;
+            }
             $drive->save();
         }
-        return redirect()->route('myDrive.index')->with('status', 'file was upload');
+        return redirect()->back()->with('status', 'file was upload');
 
     }
 
