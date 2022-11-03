@@ -22,4 +22,5 @@ Auth::routes();
 Route::middleware('auth')->group(function (){
     Route::get('/', [App\Http\Controllers\DriveController::class, 'index'])->name('drive.Drive');
     Route::resource('/drive/myDrive', App\Http\Controllers\DriveController::class);
+    Route::resource('/drive/folder', \App\Http\Controllers\FolderController::class);
 });

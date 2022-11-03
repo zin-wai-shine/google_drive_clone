@@ -1,4 +1,4 @@
-<div class="sidebar__container ">
+<div class="sidebar__container">
     <div class="mtStatus">
         <div class=" px-3 py-1">
             <button class=" create__btn bg-white fw-bold text-opacity-50 text-dark px-3 d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -8,9 +8,9 @@
             <x-dropdown />
         </div>
 
-        <div class="item__container mt-2 w-100">
+        <div class=" mt-2 w-100">
             <div class="item w-100 px-4 py-2" style="background-color: #E8F0FE">
-                <a href="" class="text-decoration-none fw-bold d-flex align-items-center">
+                <a href="{{ route('myDrive.index') }}" class="text-decoration-none fw-bold d-flex align-items-center">
                     <i class="fa fa-book item__icon__size"></i>
                     <div>My Drive</div>
                 </a>

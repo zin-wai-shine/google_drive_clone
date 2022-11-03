@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('original_name');
             $table->string('new_name');
             $table->string('extension');
-            $table->foreignId('user_id');
+            $table->foreignId('folder_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

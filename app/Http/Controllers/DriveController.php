@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDriveRequest;
 use App\Http\Requests\UpdateDriveRequest;
 use App\Models\Drive;
+use App\Models\Folder;
 use Illuminate\Support\Facades\Auth;
 
 class DriveController extends Controller
@@ -16,8 +17,12 @@ class DriveController extends Controller
      */
     public function index()
     {
-        $drives = Drive::latest('id')->paginate(5)->withQueryString();
-        return view('myDrive.index', compact('drives'));
+        $drives = Drive::with('user')
+            ->where('user_id', Auth::id())
+            ->where('folder_id', null)
+            ->latest('id')->get();
+        $folders =Folder::where('user_id', Auth::id())->latest('id')->get();
+        return view('myDrive.index', compact('drives', 'folders'));
     }
 
     /**
@@ -38,7 +43,7 @@ class DriveController extends Controller
      */
     public function store(StoreDriveRequest $request)
     {
-        foreach ($request->uploadFile as $key => $file) {
+        foreach ($request->upload_file as $key => $file) {
             $drive = new Drive();
             $drive->original_name = $file->getClientOriginalName();
             $drive->new_name = $file->store('public/myDrive');
