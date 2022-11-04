@@ -102,8 +102,10 @@ class DriveController extends Controller
      * @param  \App\Models\Drive  $drive
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Drive $drive)
+    public function destroy($id)
     {
-        //
+        $file = Drive::all()->find($id) ;
+        $file->delete();
+        return redirect()->back()->with('status','file was delete');
     }
 }

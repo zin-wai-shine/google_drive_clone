@@ -50,16 +50,16 @@
         </div>
         <div class="myDrive__container d-flex align-items-center gap-3 flex-wrap">
             @forelse($drives as $drive)
-                <div
-                    class="myDrive__item__container border-2 border border-opacity-25 border-secondary"
-                >
+                    <div
+                        class="myDrive__item__container border-2 border border-opacity-25 border-secondary"
+                    >
                         <div style="height: 80%; border-bottom: 1px solid #F0F0F0">
                             <div class="w-100 h-100 d-flex justify-content-center align-items-center">
                                 <i class="fa
                                      @if($drive->extension === "csv")
-                                        fa-file-alt text-success
+                                        fa-file-csv text-success
                                         @elseif($drive->extension === "txt")
-                                            fa-file-word text-primary
+                                            fa-file-alt text-primary
                                             @elseif($drive->extension === "pdf")
                                                 fa-file-pdf text-danger
                                             @endif
@@ -68,7 +68,7 @@
                                 </i>
                             </div>
                         </div>
-                <div
+                    <div
                         class="bg-white px-3 py-2 item__container"
                         style="height: 20%"
                         data-bs-toggle="dropdown"
@@ -77,9 +77,9 @@
                         <div class="d-flex gap-2  align-items-center h6 mb-0">
                             <i class="fa
                              @if($drive->extension === "csv")
-                                fa-file-alt text-secondary
+                                fa-file-excel text-success
                                 @elseif($drive->extension === "txt")
-                                    fa-file-word text-primary
+                                    fa-file-alt text-primary
                                     @elseif($drive->extension === "pdf")
                                         fa-file-pdf text-danger
                                      @endif
@@ -88,7 +88,7 @@
                             <div>{{ $drive->original_name }}</div>
                         </div>
                     </div>
-                    <x-control folder="false" folderId="null"/>
+                    <x-control folder="false" folderId="null" :fileId="$drive->id"/>
                 </div>
             @empty
                     <div class="d-flex justify-content-center align-items-center empty__container">
@@ -98,11 +98,12 @@
 
         </div>
 {{--Show Files End--}}
-
     </div>
 
 @endsection
 
 @push('script')
+    <script>
 
+    </script>
 @endpush

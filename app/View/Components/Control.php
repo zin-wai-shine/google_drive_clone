@@ -6,16 +6,18 @@ use Illuminate\View\Component;
 
 class Control extends Component
 {
-    public $folder, $folderId;
+    public $folder, $folderId, $fileId;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($folder, $folderId)
+    public function __construct($folder, $folderId, $fileId)
     {
+        $this->fileId = $fileId;
         $this->folder = $folder;
         $this->folderId = $folderId;
+
     }
 
     /**

@@ -18,8 +18,7 @@
                    {{ $getFolder->name }}
                    <i class="fa fa-caret-down"></i>
                </h5>
-
-               <x-control folder="true" :folderId="$getFolder->id"/>
+               <x-control folder="true" :folderId="$getFolder->id"  :fileId="$getFolder"/>
            </div>
 
         </div>
@@ -34,9 +33,9 @@
                         <div class="w-100 h-100 d-flex justify-content-center align-items-center">
                             <i class="fa
                                 @if($drive->extension === "csv")
-                                    fa-file-alt text-success
+                                    fa-file-csv text-success
                                 @elseif($drive->extension === "txt")
-                                    fa-file-word text-primary
+                                    fa-file-alt text-primary
                                 @elseif($drive->extension === "pdf")
                                     fa-file-pdf text-danger
                                 @endif
@@ -53,9 +52,9 @@
                         <div class="d-flex gap-2  align-items-center h6 mb-0">
                             <i class="fa
                              @if($drive->extension === "csv")
-                                fa-file-alt text-secondary
+                                fa-file-csv text-success
                                 @elseif($drive->extension === "txt")
-                                fa-file-word text-primary
+                                fa-file-alt text-primary
                                 @elseif($drive->extension === "pdf")
                                 fa-file-pdf text-danger
                                 @endif
@@ -64,7 +63,7 @@
                             <div>{{ $drive->original_name }}</div>
                         </div>
                     </div>
-                    <x-control folder="false" folderId="null"/>
+                    <x-control folder="false" folderId="null" :fileId="$drive->id"/>
                 </div>
             @empty
                 <div class="d-flex justify-content-center align-items-center empty__container">

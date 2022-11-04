@@ -11,3 +11,12 @@ newFile.forEach(e => {
 getFile.addEventListener('change', () => {
     uploadForm.submit();
 })
+
+let deleteItem = document.querySelectorAll('#deleteItem');
+let deleteForm = document.querySelector('#deleteForm');
+
+deleteItem.forEach(e => {
+    e.addEventListener('click', () => {
+        deleteForm.submit();
+    })
+})

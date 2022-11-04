@@ -56,7 +56,7 @@
             <div class="item w-100 px-4 py-2 mt-2">
                 <a href="" class="text-decoration-none text-black-50 fw-bold d-flex align-items-center">
                     <i class="fa fa-cloud item__icon__size"></i>
-                    <div>Storage (88% full)</div>
+                    <div class="text-nowrap">Storage (88% full)</div>
                 </a>
             </div>
 

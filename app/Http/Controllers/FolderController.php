@@ -91,6 +91,7 @@ class FolderController extends Controller
      */
     public function destroy(Folder $folder)
     {
-        //
+        $folder->delete();
+        return redirect()->route('myDrive.index')->with('status', 'folder was delete');
     }
 }
