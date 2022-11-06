@@ -24,5 +24,11 @@ Route::middleware('auth')->group(function (){
     Route::resource('/drive/myDrive', App\Http\Controllers\DriveController::class);
     Route::resource('/drive/folder', \App\Http\Controllers\FolderController::class);
 
-    Route::get('/drive/myDrive/{id}', [\App\Http\Controllers\FunctionStatusController::class, 'copy'])->name('myDrive.copy')
+    Route::get('/drive/myDrive/file_copy/{id}', [\App\Http\Controllers\FunctionStatusController::class, 'fileCopy'])->name('myDrive.fileCopy');
+    Route::get('/drive/myDrive/folder_copy/{id}', [\App\Http\Controllers\FunctionStatusController::class, 'folderCopy'])->name('myDrive.folderCopy');
+
+    Route::get('/drive/myDrive/file_download/{id}', [\App\Http\Controllers\FunctionStatusController::class, 'fileDownload'])->name('myDrive.fileDownload');
+
+    Route::post('/drive/myDrive/upload_folder', [\App\Http\Controllers\FunctionStatusController::class, 'uploadFolder'])->name('myDrive.uploadFolder');
+
 });

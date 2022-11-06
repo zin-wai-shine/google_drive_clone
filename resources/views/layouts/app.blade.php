@@ -52,7 +52,7 @@
                         @include('layouts.nav')
                         <div class="d-flex justify-content-between">
                             @include('layouts.sidebar')
-                            <div class="w-100 px-3 bg-white">
+                            <div class="w-100 px-3 py-5  content__container">
                                 @yield('content')
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="mtStatus px-2">
+    <div class="content__mtStatus px-2">
         <div class="py-1 d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #F0F0F0">
            <div class="d-flex align-items-center">
                <a href="{{ route('myDrive.index') }}" class="mb-0 d-flex align-items-center gap-3 py-2  px-3 rounded text-decoration-none"
@@ -29,18 +29,14 @@
                 <div
                     class="myDrive__item__container border-2 border border-opacity-25 border-secondary"
                 >
-                    <div style="height: 80%; border-bottom: 1px solid #F0F0F0">
+                    <div style="height: 80%; border-bottom: 1px solid #F0F0F0" class="overflow-hidden">
+                        @if($drive->extension === "jpg" || $drive->extension === "png" || $drive->extension === "jpeg" )
+                            <img src="{{ asset(\Illuminate\Support\Facades\Storage::url($drive->new_name)) }}" style="height:100%" alt="">
+                        @endif
                         <div class="w-100 h-100 d-flex justify-content-center align-items-center">
-                            <i class="fa
-                                @if($drive->extension === "csv")
-                                    fa-file-csv text-success
-                                @elseif($drive->extension === "txt")
-                                    fa-file-alt text-primary
-                                @elseif($drive->extension === "pdf")
-                                    fa-file-pdf text-danger
-                                @endif
-                                    item__extension__icon mb-0 ">
-                            </i>
+
+                          <x-file :drive="$drive" size="item__extension__icon"/>
+
                         </div>
                     </div>
                     <div
@@ -50,17 +46,10 @@
                         aria-expanded="false"
                     >
                         <div class="d-flex gap-2  align-items-center h6 mb-0">
-                            <i class="fa
-                             @if($drive->extension === "csv")
-                                fa-file-csv text-success
-                                @elseif($drive->extension === "txt")
-                                fa-file-alt text-primary
-                                @elseif($drive->extension === "pdf")
-                                fa-file-pdf text-danger
-                                @endif
-                                h4 mb-0">
-                            </i>
-                            <div>{{ $drive->original_name }}</div>
+
+                            <x-file :drive="$drive" size="sm__extension__icon" />
+
+                            <div>{{ Str::limit($drive->original_name, 10, "...".$drive->extension) }}</div>
                         </div>
                     </div>
                     <x-control folder="false" folderId="null" :fileId="$drive->id"/>

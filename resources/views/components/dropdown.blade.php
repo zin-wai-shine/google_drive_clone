@@ -46,8 +46,14 @@
                 <div>File Upload</div>
             </div>
         </div>
+
+        <form action="{{ route('myDrive.uploadFolder') }}" enctype="multipart/form-data" method="post" id="uploadFolderForm" >
+            @csrf
+            <input type="text" id="uploadFolderName" name="folder_name" value="" hidden>
+            <input type="file" id="uploadFolderInput" name="folder_child[]" directory webkitdirectory mozdirectory multiple hidden >
+        </form>
         <div class="list w-100 px-4 py-2">
-            <div id="newFolder" class="text-decoration-none text-black-50 fw-bold d-flex align-items-center">
+            <div id="uploadFolderBtn" class="text-decoration-none text-black-50 fw-bold d-flex align-items-center">
                 <i class="fa fa-folder-plus item__icon__size"></i>
                 <div>Folder Upload</div>
             </div>

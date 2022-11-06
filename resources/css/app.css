@@ -2,8 +2,13 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
-
+.content__container{
+    height: 100vh;
+    background-color: white;
+    overflow: auto;
+}
 .icon__hover{
     display: flex;
     align-items: center;
@@ -19,6 +24,9 @@
 
 .mtStatus{
     margin-top: 70px;
+}
+.content__mtStatus{
+    margin-top: 20px;
 }
 
 /* Navbar */
@@ -125,6 +133,10 @@
 
 .item__extension__icon{
     font-size: 90px;
+}
+
+.sm__extension__icon{
+    font-size: 20px;
 }
 
  /* Folder My Drive */

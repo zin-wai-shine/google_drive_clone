@@ -4,20 +4,18 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Control extends Component
+class File extends Component
 {
-    public $folder, $folderId, $fileId;
+    public $drive, $size;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($folder='', $folderId='', $fileId='')
+    public function __construct($drive='', $size='')
     {
-        $this->fileId = $fileId;
-        $this->folder = $folder;
-        $this->folderId = $folderId;
-
+        $this->drive = $drive;
+        $this->size = $size;
     }
 
     /**
@@ -27,6 +25,6 @@ class Control extends Component
      */
     public function render()
     {
-        return view('components.control');
+        return view('components.file');
     }
 }

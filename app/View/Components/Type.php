@@ -4,20 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Control extends Component
+class Type extends Component
 {
-    public $folder, $folderId, $fileId;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($folder='', $folderId='', $fileId='')
+    public function __construct()
     {
-        $this->fileId = $fileId;
-        $this->folder = $folder;
-        $this->folderId = $folderId;
-
+        //
     }
 
     /**
@@ -27,6 +23,6 @@ class Control extends Component
      */
     public function render()
     {
-        return view('components.control');
+        return view('components.type');
     }
 }
