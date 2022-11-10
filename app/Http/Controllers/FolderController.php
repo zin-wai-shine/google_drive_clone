@@ -91,6 +91,12 @@ class FolderController extends Controller
      */
     public function destroy(Folder $folder)
     {
+        $fileInFolder = Drive::where('folder_id', $folder->id)->get();
+
+        foreach ($fileInFolder as $file){
+            $file->delete();
+        }
+
         $folder->delete();
         return redirect()->route('myDrive.index')->with('status', 'folder was delete');
     }

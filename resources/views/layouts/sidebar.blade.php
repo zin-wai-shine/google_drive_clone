@@ -45,7 +45,7 @@
             </div>
 
             <div class="item w-100 px-4 py-2">
-                <a href="" class="text-decoration-none text-black-50 fw-bold d-flex align-items-center">
+                <a href="{{ route('drive.trash') }}" class="text-decoration-none text-black-50 fw-bold d-flex align-items-center">
                     <i class="fa fa-trash-can item__icon__size"></i>
                     <div>Trash</div>
                 </a>
@@ -54,9 +54,17 @@
         <hr>
         <div class="item__container mt-2 w-100">
             <div class="item w-100 px-4 py-2 mt-2">
-                <a href="" class="text-decoration-none text-black-50 fw-bold d-flex align-items-center">
-                    <i class="fa fa-cloud item__icon__size"></i>
-                    <div class="text-nowrap">Storage (88% full)</div>
+                <a href="" class="text-decoration-none text-black-50 fw-bold">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <i class="fa fa-cloud item__icon__size"></i>
+                        <div class="text-nowrap">
+                            Storage (88% full)
+                        </div>
+                    </div>
+
+                   <div class="text-center">
+                       {{ \App\helpers\MbCalculate::totalFileSize() }}
+                   </div>
                 </a>
             </div>
 

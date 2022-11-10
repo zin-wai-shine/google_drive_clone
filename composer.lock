@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95b694b18e97667437a84c0f7c711826",
+    "content-hash": "54a8c86fbefcb318d9fc0208b22e1c8d",
     "packages": [
         {
             "name": "brick/math",
@@ -2024,6 +2024,65 @@
             "time": "2022-09-12T23:36:20+00:00"
         },
         {
+            "name": "nicolafranchini/venobox",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nicolafranchini/VenoBox.git",
+                "reference": "1178b2b7687d53f3262992f0713c377ae050cf52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nicolafranchini/VenoBox/zipball/1178b2b7687d53f3262992f0713c377ae050cf52",
+                "reference": "1178b2b7687d53f3262992f0713c377ae050cf52",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "dist/venobox.min.js"
+                    ],
+                    "styles": [
+                        "dist/venobox.min.css"
+                    ],
+                    "files": [
+                        "dist/venobox.min.js",
+                        "dist/venobox.min.css"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicola Franchini",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Responsive JavaScript modal window plugin, touch swipe gallery",
+            "keywords": [
+                "gallery",
+                "lightbox",
+                "modal",
+                "no-jquery",
+                "plugin",
+                "popup",
+                "responsive",
+                "swipe",
+                "touch",
+                "vanilla",
+                "window"
+            ],
+            "support": {
+                "issues": "https://github.com/nicolafranchini/VenoBox/issues",
+                "source": "https://github.com/nicolafranchini/VenoBox/releases"
+            },
+            "time": "2021-12-16T16:26:31+00:00"
+        },
+        {
             "name": "nikic/php-parser",
             "version": "v4.15.1",
             "source": {
@@ -2239,6 +2298,72 @@
                 }
             ],
             "time": "2022-07-30T15:51:26+00:00"
+        },
+        {
+            "name": "pion/laravel-chunk-upload",
+            "version": "v1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pionl/laravel-chunk-upload.git",
+                "reference": "e1ffe87e8a50a6a8cf8204c6afd46f6df99083e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pionl/laravel-chunk-upload/zipball/e1ffe87e8a50a6a8cf8204c6afd46f6df99083e6",
+                "reference": "e1ffe87e8a50a6a8cf8204c6afd46f6df99083e6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "5.2 - 5.8 | ^6.0 | ^7.0 | ^8.0 | ^9.0",
+                "illuminate/filesystem": "5.2 - 5.8 | ^6.0 | ^7.0 | ^8.0 | ^9.0",
+                "illuminate/http": "5.2 - 5.8 | ^6.0 | ^7.0 | ^8.0 | ^9.0",
+                "illuminate/support": "5.2 - 5.8 | ^6.0 | ^7.0 | ^8.0 | ^9.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16.0",
+                "mockery/mockery": "^1.1.0 | ^1.3.0",
+                "overtrue/phplint": "^1.1 | ^2.0",
+                "phpunit/phpunit": "5.7 | 6.0 | 7.0 | 7.5 | 8.4 | ^8.5 | ^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pion\\Laravel\\ChunkUpload\\Providers\\ChunkUploadServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pion\\Laravel\\ChunkUpload\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Kluska",
+                    "email": "martin@kluska.cz"
+                }
+            ],
+            "description": "Service for chunked upload with several js providers",
+            "support": {
+                "issues": "https://github.com/pionl/laravel-chunk-upload/issues",
+                "source": "https://github.com/pionl/laravel-chunk-upload/tree/v1.5.1"
+            },
+            "funding": [
+                {
+                    "url": "https://revolut.me/martinpv7n",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/pionl",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-08-31T07:30:45+00:00"
         },
         {
             "name": "psr/container",

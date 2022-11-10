@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\helpers\MbCalculate;
 use App\Models\Drive;
 use App\Models\Folder;
 use Illuminate\Database\Eloquent\Model;
@@ -35,6 +36,7 @@ class FunctionStatusController extends Controller
     }
 
     public function uploadFolder(Request $request){
+
         $folder = new Folder();
         $folder->name = $request->folder_name;
         $folder->user_id = Auth::id();
@@ -57,10 +59,10 @@ class FunctionStatusController extends Controller
         return redirect()->route('myDrive.index')->with('status', 'folder was upload');
     }
 
-
     public function fileDownload($id){
         $file = Drive::all()->find($id);
         return Storage::download($file->new_name, $file->original_name);
     }
+
 
 }

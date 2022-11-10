@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('folders', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('json', function (Blueprint $table) {
+            //
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('folders');
+        Schema::table('json', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -24,7 +24,7 @@
 
         @if($folder === "false")
             <div class="list w-100 px-4 py-2">
-                <div class="text-decoration-none text-black-50 fw-bold d-flex align-items-center">
+                <div class="showPhoto text-decoration-none text-black-50 fw-bold d-flex align-items-center">
                     <i class="fa fa-eye item__icon__size"></i>
                     <div>Preview</div>
                 </div>

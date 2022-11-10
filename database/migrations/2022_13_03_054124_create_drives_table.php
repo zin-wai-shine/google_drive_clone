@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('extension')->default('txt');
             $table->foreignId('folder_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

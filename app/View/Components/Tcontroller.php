@@ -4,21 +4,20 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Control extends Component
+class Tcontroller extends Component
 {
-    public $folder, $folderId, $fileId, $link;
+    public $fileId, $folder, $folderId, $link;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($folder='', $folderId='', $fileId='', $link='')
+    public function __construct($fileId='', $folder='', $folderId='', $link='')
     {
         $this->fileId = $fileId;
         $this->folder = $folder;
         $this->folderId = $folderId;
         $this->link = $link;
-
     }
 
     /**
@@ -28,6 +27,6 @@ class Control extends Component
      */
     public function render()
     {
-        return view('components.control');
+        return view('components.tcontroller');
     }
 }

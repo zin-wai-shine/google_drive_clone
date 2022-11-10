@@ -3,31 +3,32 @@
 
     <div class="content__mtStatus px-2">
         <div class="py-1 d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #F0F0F0">
-           <div class="d-flex align-items-center gap-2">
-               <a href="{{ route('myDrive.index') }}" class="mb-0 d-flex align-items-center gap-3 py-2  px-3 rounded text-decoration-none"
-                  style="cursor:pointer; background-color: #E8F0FE;">
-                   <h5 class="mb-0 text-primary fw-bold">
-                       My Drive
-                   </h5>
-               </a>
-               <div>
-                   <i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>
-               </div>
-               <h5 class="mb-0 d-flex align-items-center gap-3 py-2  px-3 rounded"
-                   style="background-color: #E8F0FE; cursor:pointer;"
-                   data-bs-toggle="dropdown"
-                   aria-expanded="false">
-                   {{ $getFolder->name }}
-                   <i class="fa fa-caret-down"></i>
-               </h5>
-               <x-control folder="true" :folderId="$getFolder->id"  :fileId="$getFolder"/>
-           </div>
+            <div class="d-flex align-items-center gap-2">
+                <a href="{{ route('drive.trash') }}" class="mb-0 d-flex align-items-center gap-3 py-2  px-3 rounded text-decoration-none"
+                   style="cursor:pointer;">
+                    <h5 class="mb-0 fw-bold text-primary">
+                        Trash
+                        <i class="fa fa-trash-can"></i>
+                    </h5>
+                </a>
+                <div>
+                    <i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>
+                </div>
+                <h5 class="mb-0 d-flex align-items-center gap-3 py-2  px-3 rounded"
+                    style="background-color: #E8F0FE; cursor:pointer;"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    {{ $getFolder->name }}
+                    <i class="fa fa-caret-down"></i>
+                </h5>
+                <x-tcontroller folder="true" :folderId="$getFolder->id"  :fileId="$getFolder"/>
+            </div>
 
         </div>
 
 
         <div class="myDrive__container py-3 d-flex align-items-center gap-3 flex-wrap">
-            @forelse($getFolder->files as $drive)
+            @forelse($files as $drive)
                 <div
                     class="myDrive__item__container border-2 border border-opacity-25 border-secondary"
                 >
@@ -37,7 +38,7 @@
                         @endif
                         <div class="w-100 h-100 d-flex justify-content-center align-items-center">
 
-                          <x-file :drive="$drive" size="item__extension__icon"/>
+                            <x-file :drive="$drive" size="item__extension__icon"/>
 
                         </div>
                     </div>
@@ -54,7 +55,7 @@
                             <div>{{ Str::limit($drive->original_name, 10, "...".$drive->extension) }}</div>
                         </div>
                     </div>
-                    <x-control folder="false" folderId="null" :fileId="$drive->id"/>
+                    <x-tcontroller folder="false" :fileId="$drive->id" :folderId="$getFolder->id"/>
                 </div>
             @empty
                 <div class="d-flex justify-content-center align-items-center empty__container">
