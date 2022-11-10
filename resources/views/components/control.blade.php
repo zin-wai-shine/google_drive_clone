@@ -41,34 +41,48 @@
         </div>
 
 {{--            Copy Status--}}
-
-        @if($folder === "false")
                 <div class="list w-100 px-4 py-2">
+                    @if($folder === "false" || $external === "false")
+                            <form action="{{ route("myDrive.fileInternalCopy") }}" id="internalCopy" method="post">
+                                @csrf
+                                <input type="text" name="fileId" value="{{ $fileId }}" hidden>
+                                <input type="text" name="folderId" value="{{ $folderId }}" hidden>
+                            </form>
+                        @endif
                     <a
                         @if($folder === "true")
-                        href="{{ route('myDrive.folderCopy', $folderId) }}"
+                            href="{{ route('myDrive.folderCopy', $folderId) }}"
+                            id="folderCopy"
                         @elseif($folder === "false")
-                        href="{{ route('myDrive.fileCopy', $fileId) }}"
+                            href="{{ route('myDrive.fileCopy', $fileId) }}"
+                            id="externalCopy"
                         @endif
-                        class="text-decoration-none w-100 text-black-50 fw-bold d-flex align-items-center text-decoration-none">
+                    >
+                    </a>
+
+                    <div
+                        class="text-decoration-none w-100 text-black-50 fw-bold d-flex align-items-center text-decoration-none"
+                        @if($folder === "true") id="folderCopyBtn" @endif
+                        @if($folder === "false")  id='externalFileCopy' @endif
+                        data-bs-toggle="modal" data-bs-target="#fileInFolderCopyBtn"
+                    >
                         <i class="fa fa-copy item__icon__size"></i>
                         <div>Copy</div>
-                    </a>
+                    </div>
+
                 </div>
-            @endif
-{{--            Delete Status--}}
-
-
+{{-- Delete Status --}}
                 <form
-                        @if($folder === "true")
-                            action="{{ route('folder.destroy',$folderId) }}"
-                        @elseif($folder === "false")
-                            action="{{ route('myDrive.destroy',$fileId) }}"
-                        @endif
-                    method="post">
+                    @if($folder === "true")
+                        action="{{ route('folder.destroy',$folderId) }}"
+                    @elseif($folder === "false")
+                        action="{{ route('myDrive.destroy',$fileId) }}"
+                    @endif
+                    method="post"
+                    class="list w-100  py-2"
+                >
                     @csrf
                     @method('delete')
-
                     <div class="list w-100py-2">
                         <button class="border-0 py-0 px-4 btn w-100 text-decoration-none text-black-50 fw-bold d-flex align-items-center justify-content-start">
                             <i class="text-start fa fa-trash-can item__icon__size"></i>

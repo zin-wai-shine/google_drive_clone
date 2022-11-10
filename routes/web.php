@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function (){
     Route::resource('/drive/folder', \App\Http\Controllers\FolderController::class);
 
     Route::get('/drive/myDrive/file_copy/{id}', [\App\Http\Controllers\FunctionStatusController::class, 'fileCopy'])->name('myDrive.fileCopy');
+    Route::post('/drive/myDrive/file_internal_copy', [\App\Http\Controllers\FunctionStatusController::class, 'fileInternalCopy'])->name('myDrive.fileInternalCopy');
     Route::get('/drive/myDrive/folder_copy/{id}', [\App\Http\Controllers\FunctionStatusController::class, 'folderCopy'])->name('myDrive.folderCopy');
 
     Route::get('/drive/myDrive/file_download/{id}', [\App\Http\Controllers\FunctionStatusController::class, 'fileDownload'])->name('myDrive.fileDownload');

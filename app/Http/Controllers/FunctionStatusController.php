@@ -13,17 +13,26 @@ use Illuminate\Support\Facades\Storage;
 
 class FunctionStatusController extends Controller
 {
-    public function fileCopy($id){
-        $file = Drive::all()->find($id);
+    public function addFile($file, $folderId){
         $drive = new Drive();
         $drive->original_name = $file->original_name;
         $drive->new_name = $file->new_name;
         $drive->extension = $file->extension;
         $drive->user_id = Auth::id();
-        $drive->folder_id = $file->forder_id;
+        $drive->folder_id = $folderId;
         $drive->save();
+    }
 
+    public function fileCopy($id){
+        $file = Drive::all()->find($id);
+        $this->addFile($file, $file->folder_id);
         return redirect()->back()->with('status', 'file was copy');
+    }
+
+    public function fileInternalCopy(Request $request){
+        $file = Drive::findOrFail($request->fileId);
+        $this->addFile($file, $request->folderId);
+        return redirect()->back()->with('status', 'file was create');
     }
 
     public function folderCopy($id){
@@ -32,6 +41,11 @@ class FunctionStatusController extends Controller
         $folder->name = $getFolder->name;
         $folder->user_id = Auth::id();
         $folder->save();
+
+        $files = Drive::where('folder_id', $id)->get();
+        foreach ($files as $file){
+            $this->addFile($file, $folder->id);
+        }
         return redirect()->back()->with('status', 'folder was copy');
     }
 

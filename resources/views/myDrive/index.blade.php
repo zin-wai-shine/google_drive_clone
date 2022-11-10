@@ -65,7 +65,8 @@
                                 <x-file :drive="$drive" size="item__extension__icon" />
                             </div>
                         </div>
-                    <div
+
+                        <div
                         class="bg-white px-3 py-2 item__container"
                         style="height: 20%"
                         data-bs-toggle="dropdown"
@@ -76,7 +77,8 @@
                             <div>{{ Str::limit($drive->original_name, 10, "...".$drive->extension) }}</div>
                         </div>
                     </div>
-                    <x-control folder="false" folderId="null" :fileId="$drive->id" :link="asset(\Illuminate\Support\Facades\Storage::url($drive->new_name))"/>
+
+                        <x-control folder="false" :fileId="$drive->id" external='true'/>
                 </div>
             @empty
                     <div class="d-flex justify-content-center align-items-center empty__container">
@@ -92,6 +94,13 @@
 
 @push('script')
     <script>
+        /*let externalFileCopy = document.querySelector('#externalFileCopy');
+        let externalCopy = document.querySelectorAll('#externalCopy');
+        externalCopy.forEach(e => {
+            externalFileCopy.addEventListener('click', () => {
+                e.click();
+            })
+        })*/
 
     </script>
 @endpush

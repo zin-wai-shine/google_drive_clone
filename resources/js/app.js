@@ -61,7 +61,6 @@ uploadFolderBtn.forEach(e => {
         uploadFolderInput.click();
     });
 });
-
 uploadFolderInput.addEventListener('change', (e)=>{
 
     let name = e.target.files[0].webkitRelativePath.substring(0,e.target.files[0].webkitRelativePath.indexOf('/'));
@@ -69,4 +68,22 @@ uploadFolderInput.addEventListener('change', (e)=>{
     uploadFolderForm.submit();
 })
 
-let photoLink = document.getElementsByClassName('.photo_link');
+// Folder Copy Status
+let folderCopyBtn = document.getElementById('folderCopyBtn');
+let folderCopy = document.getElementById('folderCopy');
+folderCopyBtn.addEventListener('click', () => {
+   folderCopy.click();
+});
+
+//Copy File Inside Folder Status
+let internalCopyBtn = document.getElementById('internalCopyBtn');
+let externalCopyBtn = document.getElementById('externalCopyBtn');
+let internalCopy = document.getElementById('internalCopy');
+let externalCopy = document.getElementById('externalCopy');
+
+internalCopyBtn.addEventListener('click', () => {
+    internalCopy.submit();
+});
+externalCopyBtn.addEventListener('click', () => {
+    externalCopy.click();
+});
