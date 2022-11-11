@@ -26,11 +26,15 @@ class FolderApiController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+           'name' => 'required'
+        ]);
+
         $folder = new Folder();
         $folder->name = $request->name;
         $folder->user_id = Auth::id();
         $folder->save();
-        return response()->json(['message' => 'folder was create ✅'], 200);
+        return response()->json(['message' => 'folder was created ✅'], 200);
     }
 
     public function show($id)

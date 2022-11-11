@@ -53,7 +53,7 @@
                     <div
                         class="myDrive__item__container border-2 border border-opacity-25 border-secondary"
                     >
-                        <div style="height: 80%; border-bottom: 1px solid #F0F0F0" class="overflow-hidden">
+                        <div style="height: 80%; border-bottom: 1px solid #F0F0F0;background-color: #E5E7E8" class="overflow-hidden text-center">
                             @if($drive->extension === "jpg" || $drive->extension === "png" || $drive->extension === "jpeg" )
                                 <img src="{{ asset(\Illuminate\Support\Facades\Storage::url($drive->new_name)) }}" style="height:100%" alt="">
                             @endif

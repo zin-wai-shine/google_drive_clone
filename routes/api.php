@@ -32,6 +32,16 @@ Route::prefix("v1")->group(function () {
         Route::post("drive/upload_folder", [\App\Http\Controllers\MoreStatusApiController::class, 'uploadFolder'])->name("drive.uploadFolder");
         Route::get("drive/total_file_size", [\App\Http\Controllers\MoreStatusApiController::class, 'totalFileSize'])->name("drive.totalFileSize");
 
+        Route::get('drive/trash/files',[\App\Http\Controllers\TrashApiController::class, 'files']);
+        Route::get('drive/trash/folders',[\App\Http\Controllers\TrashApiController::class, 'folders']);
+
+        Route::get('drive/trash-folder-file/{id}',[\App\Http\Controllers\TrashApiController::class, 'trashFolderFile']);
+
+        Route::get('drive/trash/file/delete/{id}', [\App\Http\Controllers\TrashApiController::class, 'fileForceDelete']);
+        Route::get('drive/trash/file/restore/{id}', [\App\Http\Controllers\TrashApiController::class, 'fileForceRestore']);
+
+        Route::get('drive/trash/folder/delete/{id}', [\App\Http\Controllers\TrashApiController::class, 'folderForceDelete']);
+        Route::get('drive/trash/folder/restore/{id}', [\App\Http\Controllers\TrashApiController::class, 'folderForceRestore']);
         /*Route::get()*/
     }
     );

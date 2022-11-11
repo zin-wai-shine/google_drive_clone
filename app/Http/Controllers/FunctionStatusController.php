@@ -25,7 +25,7 @@ class FunctionStatusController extends Controller
 
     public function fileCopy($id){
         $file = Drive::all()->find($id);
-        $this->addFile($file, $file->folder_id);
+        $this->addFile($file, null);
         return redirect()->back()->with('status', 'file was copy');
     }
 

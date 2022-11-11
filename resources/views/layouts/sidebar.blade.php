@@ -55,16 +55,17 @@
         <div class="item__container mt-2 w-100">
             <div class="item w-100 px-4 py-2 mt-2">
                 <a href="" class="text-decoration-none text-black-50 fw-bold">
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-center align-items-center px-4">
                         <i class="fa fa-cloud item__icon__size"></i>
-                        <div class="text-nowrap">
-                            Storage (88% full)
-                        </div>
+                        <small class="text-nowrap progress__text" id="storageText"></small>
                     </div>
-
+                    <div class="storage__progress__container mt-2 mb-1 overflow-hidden">
+                        <div class="storage__progress" id="storageProgress"></div>
+                    </div>
                    <div class="text-center">
-                       {{ \App\helpers\MbCalculate::totalFileSize() }}
+                       <small class="progress__text">{{ \App\helpers\MbCalculate::totalFileSize() }} of 200MB used</small>
                    </div>
+                    <input type="text" id="normalTotalFileSize" value="{{ \App\helpers\MbCalculate::normalTotalFileSize() }}" hidden>
                 </a>
             </div>
 

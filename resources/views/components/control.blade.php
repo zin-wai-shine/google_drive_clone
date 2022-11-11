@@ -49,26 +49,39 @@
                                 <input type="text" name="folderId" value="{{ $folderId }}" hidden>
                             </form>
                         @endif
-                    <a
-                        @if($folder === "true")
-                            href="{{ route('myDrive.folderCopy', $folderId) }}"
-                            id="folderCopy"
-                        @elseif($folder === "false")
-                            href="{{ route('myDrive.fileCopy', $fileId) }}"
-                            id="externalCopy"
-                        @endif
-                    >
-                    </a>
 
-                    <div
-                        class="text-decoration-none w-100 text-black-50 fw-bold d-flex align-items-center text-decoration-none"
-                        @if($folder === "true") id="folderCopyBtn" @endif
-                        @if($folder === "false")  id='externalFileCopy' @endif
-                        data-bs-toggle="modal" data-bs-target="#fileInFolderCopyBtn"
-                    >
-                        <i class="fa fa-copy item__icon__size"></i>
-                        <div>Copy</div>
-                    </div>
+                            <a
+                                @if($folder === "true")
+                                href="{{ route('myDrive.folderCopy', $folderId) }}"
+                                id="folderCopy"
+                                @elseif($folder === "false")
+                                href="{{ route('myDrive.fileCopy', $fileId) }}"
+                                id="externalCopy"
+                                @endif
+                            >
+                            </a>
+
+                    @if($external === "false")
+                            <div
+                                class="text-decoration-none w-100 text-black-50 fw-bold d-flex align-items-center"
+                                @if($folder === "true") id="folderCopyBtn" @endif
+                                @if($folder === "false")  id='externalFileCopy' @endif
+                                data-bs-toggle="modal" data-bs-target="#fileInFolderCopyBtn"
+                            >
+                                <i class="fa fa-copy item__icon__size"></i>
+                                <div>Copy</div>
+                            </div>
+                        @endif
+
+                        @if($external === "true")
+                            <a
+                                href="{{ route('myDrive.fileCopy', $fileId) }}"
+                                class="text-decoration-none w-100 text-black-50 fw-bold d-flex align-items-center text-decoration-none"
+                            >
+                                <i class="fa fa-copy item__icon__size"></i>
+                                <div>Copy</div>
+                            </a>
+                    @endif
 
                 </div>
 {{-- Delete Status --}}

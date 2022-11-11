@@ -27,5 +27,17 @@ class MbCalculate{
         return $value;
     }
 
+    public static function normalTotalFileSize(){
+        $user = User::where('id',Auth::id())->with('files')->first();
+        $allFiles = $user->files;
+        $fileSizes = [];
+        foreach($allFiles as $key=>$file){
+            $size = Storage::size($file->new_name);
+            $fileSizes[$key] = $size;
+        }
+        $total = array_sum($fileSizes);
+        return $total;
+    }
+
 }
 

@@ -8,6 +8,7 @@ use App\Models\Drive;
 use App\Models\Folder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,7 +27,7 @@ class MoreStatusApiController extends Controller
             $drive->folder_id = $file->forder_id;
             $drive->save();
 
-            return new FileResource($drive);
+            return response()->json(['message'=>'file was duplicate', 'data' => new FileResource($drive)]);
         }
 
         public function fileDownload($id){
@@ -38,6 +39,10 @@ class MoreStatusApiController extends Controller
         }
 
         public function uploadFolder(Request $request){
+            $request->validate([
+               'folder_name' => 'required',
+               'folder_child' => 'required'
+            ]);
 
                 $folder = new Folder();
                 $folder->name = $request->folder_name;
@@ -63,7 +68,7 @@ class MoreStatusApiController extends Controller
                 }
 
                 return response()->json([
-                        'message' => 'folder was upload'
+                        'message' => 'folder was uploaded ✅'
                         ], 200);
         }
 

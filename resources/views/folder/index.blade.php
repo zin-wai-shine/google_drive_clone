@@ -41,7 +41,7 @@
                    {{ $getFolder->name }}
                    <i class="fa fa-caret-down"></i>
                </h5>
-               <x-control folder="true" :folderId="$getFolder->id"  :fileId="$getFolder"/>
+               <x-control folder="true" :folderId="$getFolder->id"  :fileId="$getFolder" external="false"/>
            </div>
 
         </div>
@@ -52,7 +52,7 @@
                 <div
                     class="myDrive__item__container border-2 border border-opacity-25 border-secondary"
                 >
-                    <div style="height: 80%; border-bottom: 1px solid #F0F0F0" class="overflow-hidden">
+                    <div style="height: 80%; border-bottom: 1px solid #F0F0F0; background-color: #E5E7E8" class="overflow-hidden text-center">
                         @if($drive->extension === "jpg" || $drive->extension === "png" || $drive->extension === "jpeg" )
                             <img src="{{ asset(\Illuminate\Support\Facades\Storage::url($drive->new_name)) }}" style="height:100%" alt="">
                         @endif
@@ -100,5 +100,20 @@
         uploadFileFolder.addEventListener('change', () => {
             uploadFormFolder.submit();
         })
+
+
+        //Copy File Inside Folder Status
+        let internalCopyBtn = document.getElementById('internalCopyBtn');
+        let externalCopyBtn = document.getElementById('externalCopyBtn');
+        let internalCopy = document.getElementById('internalCopy');
+        let externalCopy = document.getElementById('externalCopy');
+
+        internalCopyBtn.addEventListener('click', () => {
+            internalCopy.submit();
+        });
+        externalCopyBtn.addEventListener('click', () => {
+            externalCopy.click();
+        });
+
     </script>
 @endpush
